@@ -1,9 +1,10 @@
 === my beautiful tubes ===
 Contributors: Gadgets Choose
-Tags: wordpress, Post, google, plugin, posts, admin, video, content, media, page, pages, youtube 
+Donate link: http://todayprofits.gadgets-code.com/donation-page/
+Tags: wordpress, Post, google, plugin, posts, admin, video, content, media, page, pages, youtube, twitter 
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2
 
 my beautiful tubes is a plugin which allows you to post video on your content in different positions.
@@ -11,11 +12,11 @@ my beautiful tubes is a plugin which allows you to post video on your content in
 == Description ==
 
 This plugin allows you to insert youtube video into your post at any of these four positions (top-left,bottom-right,top-right,bottom-left).
-No short code requires, just insert your youtube video share link, for example http://www.youtube.com/watch?v=RR2VpDIo8kc into the 'Tube URL' text box under
+No short code requires, just insert your youtube video link, for example http://www.youtube.com/watch?v=RR2VpDIo8kc into the 'Video URL' text box under
 'Enter Youtube Video Share Link' which is located under the right-hand-side-bar of wordpress edit post panel. Everytime you write a new post
-and decided to insert youtube video into that post, all you need to do is to insert the youtube video share link plus select the position and the size of your video
-from the select box and this video will be published together with your new post! If you want to take out that video later on, then all you need is just to
-leave the 'Tube URL' text box blank when you edit your post, after you have updated your post, the video will no longer be there, just that simple.
+and decided to insert youtube video into that post, all you need to do is to insert the youtube video link plus select the video's position and set the width and height of that video, then
+publish it together with your new post! If you want to take out that video later on, then all you need is just to
+leave the 'Video URL' text box blank when you edit your post, after you have updated your post, the video will no longer be there, just that simple.
   
 == Frequently Asked Questions == 
 
@@ -25,7 +26,7 @@ It is on the right-hand-side-bar of your WordPress edit post panel.
 
 = How to insert the video? = 
 
-1) Enter youtube share link into 'Tube URL' text box. 2) Select any of the four video positions plus the video size you prefer and publish your post.
+1) Enter youtube share link into 'Video URL' text box. 2) Select any of the four video positions plus input the video's height and width which you prefer and publish your post.
 
 = Can I change the video later on? =
 
@@ -49,6 +50,10 @@ You can visit my main plugins page and leave your question under post comment an
 2) Then follow the instructions under FAQ to insert the video.
 
 == Changelog ==
+
+= 1.2 =
+
+* Allow user to input the video size
 
 = 1.1 =
 

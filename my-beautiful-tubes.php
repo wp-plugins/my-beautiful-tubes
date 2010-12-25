@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/my-beautiful-tubes/
+Plugin URI: http://todayprofits.gadgets-code.com/2010/12/24/my-beautiful-tubes/
 Description: A plugin which allows blogger to embed youtube video on the post
-Version: 1.1
+Version: 1.2
 Author: Gadgets-Code.Com
-Author URI: http://gadgets-code.com
+Author URI: http://todayprofits.gadgets-code.com
 */
 
 
@@ -40,17 +40,18 @@ function tube_meta_box($post,$box) {
 
 
   $tube_url = get_post_meta($post->ID,'_tubes_url',true);
-  $tube_size = get_post_meta($post->ID,'_tubes_size',true);
+  $tube_wt = get_post_meta($post->ID,'_tubes_wt',true);
+  $tube_ht = get_post_meta($post->ID,'_tubes_ht',true);
   $tube_position = get_post_meta($post->ID,'_tubes_position',true);
 
-  echo '<p>'.__('Tube URL','tube-plugin'). ': <input type="text" name="tubes_url" value="'.esc_attr($tube_url).'"/></p>
-   <p>'.__('Video Size','tube-plugin'). ': <select name="tubes_size" id="tubes_size">
-     <option value="twf-twf" '.(is_null($tube_size) || $tube_size=='twf-twf' ? 'selected="selected"' : '').'>200 x 200</option>
-     <option value="thr-thr" '.($tube_size=='thr-thr' ? 'selected="selected"' : '').'>300 x 300</option></select></p><p>'.__('Video Position','tube-plugin'). ': <select name="tubes_position" id="tubes_position">
-     <option value="top-left" '.(is_null($tube_position) || $tube_position=='top-left' ? 'selected="selected"' : '').'>Top Left</option>
-     <option value="top-right" '.($tube_position=='top-right' ? 'selected="selected"' : '').'>Top Right</option>
-     <option value="bottom-left" '.($tube_position=='bottom-left' ? 'selected="selected"' : '').'>Bottom Left</option>
-     <option value="bottom-right" '.($tube_position=='bottom-right' ? 'selected="selected"' : '').'>Bottom Right</option></select></p>';
+  echo '<p>'.__('Video URL','tube-plugin'). ': <input type="text" name="tubes_url" value="'.esc_attr($tube_url).'"/></p>
+        <p>'.__('Video Width','tube-plugin'). ': <input type="text" name="tubes_wt" value="'.esc_attr($tube_wt).'"/></p>
+        <p>'.__('Video Height','tube-plugin'). ': <input type="text" name="tubes_ht" value="'.esc_attr($tube_ht).'"/></p>
+        <p>'.__('Video Position','tube-plugin'). ': <select name="tubes_position" id="tubes_position">
+        <option value="top-left" '.(is_null($tube_position) || $tube_position=='top-left' ? 'selected="selected"' : '').'>Top Left</option>
+        <option value="top-right" '.($tube_position=='top-right' ? 'selected="selected"' : '').'>Top Right</option>
+        <option value="bottom-left" '.($tube_position=='bottom-left' ? 'selected="selected"' : '').'>Bottom Left</option>
+       <option value="bottom-right" '.($tube_position=='bottom-right' ? 'selected="selected"' : '').'>Bottom Right</option></select></p>';
 
 }
 
@@ -58,8 +59,12 @@ function tube_save_meta_box($post_id) {
 
   if(isset($_POST['tubes_position'])) {
 
+    $tubeH = trim($_POST['tubes_ht']);
+    $tubeW = trim($_POST['tubes_wt']);
+
     update_post_meta($post_id,'_tubes_url',esc_attr($_POST['tubes_url']));
-    update_post_meta($post_id,'_tubes_size',esc_attr($_POST['tubes_size']));
+    update_post_meta($post_id,'_tubes_wt',esc_attr($tubeW));
+    update_post_meta($post_id,'_tubes_ht',esc_attr($tubeH));
     update_post_meta($post_id,'_tubes_position',esc_attr($_POST['tubes_position']));
 
   }
@@ -71,20 +76,8 @@ function displays_video($content) {
    $art_id = get_the_ID();
    $video_url = get_post_meta($art_id,'_tubes_url',true);
    $video_position = get_post_meta($art_id,'_tubes_position',true);
-   $tube_size = get_post_meta($art_id,'_tubes_size',true);
-
-
-   if ($tube_size == 'twf-twf') {
-
-       $vdh = 200;
-       $vdw = 200;
-
-   } else {
-
-       $vdh = 300;
-       $vdw = 300;
-
-   }
+   $vd_W = get_post_meta($art_id,'_tubes_wt',true);
+   $vd_H = get_post_meta($art_id,'_tubes_ht',true);
 
    if (is_single() || is_home()) {
 
@@ -100,7 +93,7 @@ function displays_video($content) {
 
           if($video_position=='top-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:6px;margin-top:7px;margin-bottom:2px;\">"."<object width=$vdw height=$vdh><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vdw height=$vdh></embed></object>".
+           $vidtubes = "<div style=\"float:left;margin-right:6px;margin-top:7px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H></embed></object>".
                        "<br/><script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
                        <a href=\"http://twitter.com/share\"  class=\"twitter-share-button\"
                        data-text=\"$tweet_vid\"
@@ -109,7 +102,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='top-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:6px;margin-top:7px;margin-bottom:2px;\">"."<object width=$vdw height=$vdh><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vdw height=$vdh></embed></object>".
+           $vidtubes = "<div style=\"float:right;margin-left:6px;margin-top:7px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H></embed></object>".
                        "<br/><script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
                         <a href=\"http://twitter.com/share\"  class=\"twitter-share-button\"
                         data-text=\"$tweet_vid\"
@@ -118,7 +111,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='bottom-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:6px;margin-top:3px;margin-bottom:2px;\">"."<object width=$vdw height=$vdh><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vdw height=$vdh></embed></object>".
+           $vidtubes = "<div style=\"float:left;margin-right:6px;margin-top:3px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H></embed></object>".
                        "<br/><script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
                         <a href=\"http://twitter.com/share\"  class=\"twitter-share-button\"
                         data-text=\"$tweet_vid\"
@@ -127,7 +120,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='bottom-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:6px;margin-top:3px;margin-bottom:2px;\">"."<object width=$vdw height=$vdh><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vdw height=$vdh></embed></object>".
+           $vidtubes = "<div style=\"float:right;margin-left:6px;margin-top:3px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H></embed></object>".
                        "<br/><script type=\"text/javascript\" src=\"http://platform.twitter.com/widgets.js\"></script>
                        <a href=\"http://twitter.com/share\"  class=\"twitter-share-button\"
                        data-text=\"$tweet_vid\"
