@@ -4,7 +4,7 @@ Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags: wordpress, Post, google, plugin, posts, admin, video, content, media, page, pages, youtube, twitter 
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 1.3.1
+Stable tag: 1.4
 License: GPLv2
 
 my beautiful tubes is a plugin which allows you to post video on your content in different positions.
@@ -50,6 +50,11 @@ You can visit my main plugins page and leave your question under post comment an
 2) Then follow the instructions under FAQ to insert the video.
 
 == Changelog ==
+
+= 1.4 =
+
+* Allow video to show on the page as well
+* Allow users to add in more videos from youtube
 
 = 1.3.1 =
 
