@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://todayprofits.gadgets-code.com/2011/01/07/my-beautiful-tubes-version-1-4-is-coming/
+Plugin URI: http://todayprofits.gadgets-code.com/2011/01/13/my-beautiful-tubes-version-1-5/
 Description: A plugin which allows blogger to embed youtube video on the post
-Version: 1.4
+Version: 1.5
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -47,6 +47,7 @@ function tube_meta_box($post,$box) {
   $tube_rel_des = get_post_meta($post->ID,'_tubes_rel_des',true);
   $tube_rel_link = get_post_meta($post->ID,'_tubes_rel_link',true);
   $tube_videos_link= get_post_meta($post->ID,'_tubes_videos_link',true);
+  $tube_sidebar_link= get_post_meta($post->ID,'_tubes_sidebar_link',true);
 
   echo '<p>'.__('Video URL','tube-plugin'). ': <input type="text" name="tubes_url" value="'.esc_attr($tube_url).'"/></p>
         <p>'.__('Video Width','tube-plugin'). ': <input type="text" name="tubes_wt" value="'.esc_attr($tube_wt).'"/></p>
@@ -59,7 +60,8 @@ function tube_meta_box($post,$box) {
         <p>'.__('Links Title','tube-plugin'). ': <input type="text" name="tubes_rel_title" value="'.esc_attr($tube_rel_title).'"/></p>
         <p>'.__('Related Links Description','tube-plugin'). ':<br/><textarea name="tubes_rel_des" rows="10" cols="30">'.esc_attr($tube_rel_des).'</textarea></p>
         <p>'.__('Related Links','tube-plugin'). ':<br/><textarea name="tubes_rel_link" rows="10" cols="30">'.esc_attr($tube_rel_link).'</textarea></p>
-        <p>'.__('Enter More Video Links','tube-plugin'). ':<br/><textarea name="tubes_videos_link" rows="10" cols="30">'.esc_attr($tube_videos_link).'</textarea></p>';
+        <p>'.__('Enter More Video Links','tube-plugin'). ':<br/><textarea name="tubes_videos_link" rows="10" cols="30">'.esc_attr($tube_videos_link).'</textarea></p>
+        <p>'.__('Sidebar Video Link','tube-plugin'). ': <input type="text" name="tubes_sidebar_link" value="'.esc_attr($tube_sidebar_link).'"/></p>';
 
 }
 
@@ -78,6 +80,7 @@ function tube_save_meta_box($post_id) {
     update_post_meta($post_id,'_tubes_rel_des',esc_attr($_POST['tubes_rel_des']));
     update_post_meta($post_id,'_tubes_rel_link',esc_attr($_POST['tubes_rel_link']));
     update_post_meta($post_id,'_tubes_videos_link',esc_attr($_POST['tubes_videos_link']));
+    update_post_meta($post_id,'_tubes_sidebar_link',esc_attr($_POST['tubes_sidebar_link']));
 
   }
 
@@ -132,86 +135,99 @@ function displays_video($content) {
 
           if($video_position=='top-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:7px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>".
-                       "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
+           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:5px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+
+           if($sel_description[0]!=''){
+           $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
 
                        for($selOpt=0;$selOpt<sizeof($sel_description);$selOpt++) {
                        $decsrp = $sel_description[$selOpt];
                        $declink = $sel_link[$selOpt];
                        $addup.="<option value=$declink>$decsrp</option>";
                        }
-                       $addup.="</select></form>";
+                       $addup.="</select></form>";}else{$addup.="";}
 
+                       if($youtube_share_links[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
-
                        $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
-                       $addup_two.="</div></div>";
+                       $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
             return $vidtubes.$addup.$addup_two.$content;
 
            } elseif ($video_position=='top-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:7px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>".
-                       "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
+           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:5px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+
+          if($sel_description[0]!=''){
+          $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
 
                        for($selOpt=0;$selOpt<sizeof($sel_description);$selOpt++) {
                        $decsrp = $sel_description[$selOpt];
                        $declink = $sel_link[$selOpt];
                        $addup.="<option value=$declink>$decsrp</option>";
                        }
-                       $addup.="</select></form>";
+                       $addup.="</select></form>";}else{$addup.="";}
+
+                       if($youtube_share_links[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
-
                        $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
-                       $addup_two.="</div></div>";
+                       $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
             return $vidtubes.$addup.$addup_two.$content;
 
            } elseif ($video_position=='bottom-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:3px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>".
-                       "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option  value=\"\">$tube_sel_title</option>";
+           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:3px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+
+           if($sel_description[0]!=''){
+           $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option  value=\"\">$tube_sel_title</option>";
 
                        for($selOpt=0;$selOpt<sizeof($sel_description);$selOpt++) {
                        $decsrp = $sel_description[$selOpt];
                        $declink = $sel_link[$selOpt];
                        $addup.="<option value=$declink>$decsrp</option>";
                        }
-                       $addup.="</select></form>";
+                       $addup.="</select></form>";}else{$addup.="";}
+
+                       if($youtube_share_links[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
                        $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
-                       $addup_two.="</div></div>";
+                       $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
              return $content.$vidtubes.$addup.$addup_two;
 
            } elseif ($video_position=='bottom-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:3px;margin-bottom:2px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>".
-                       "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
+           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:3px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+
+           if($sel_description[0]!=''){
+           $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
 
                        for($selOpt=0;$selOpt<sizeof($sel_description);$selOpt++) {
                        $decsrp = $sel_description[$selOpt];
                        $declink = $sel_link[$selOpt];
                        $addup.="<option value=$declink>$decsrp</option>";
                        }
-                       $addup.="</select></form>";
+                       $addup.="</select></form>";}else{$addup.="";}
+
+                       if($youtube_share_links[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
                        $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
-                       $addup_two.="</div></div>";
+                       $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
              return $content.$vidtubes.$addup.$addup_two;
 
@@ -242,6 +258,58 @@ function displays_video($content) {
 
   add_action('wp_footer','change_video');
   add_filter('the_content','displays_video');
+
+  function my_bea_video_init() {
+
+   register_widget('le_bea_video');
+
+  }
+
+  add_action('widgets_init', 'my_bea_video_init');
+
+
+  class le_bea_video extends WP_Widget {
+
+  function le_bea_video() {
+   $video_ops = array('classname'=>'le_bea_video', 'description'=>'Grab to Sidebar');
+   parent::WP_Widget('le-bea-video', __('Beautiful Tubes'), $video_ops);
+  }
+
+  function widget($args, $instance) {
+    extract($args);
+    echo $before_widget;
+
+    if(is_single() || is_page()) {
+
+    $arti_id = get_the_ID();
+    $video_sidebar_url = get_post_meta($arti_id,'_tubes_sidebar_link',true);
+    $video_sidebar_url = str_replace("=","/",str_replace("watch?","",$video_sidebar_url));
+    if($video_sidebar_url){
+    $side_video= "<div style=\"float:left;\"><object width=\"200\" height=\"190\" hspace=\"1\" vspace=\"1\" align=\"l\">
+              <param name=\"movie\" value=$video_sidebar_url.\"?fs=1\"></param>
+              <param name=\"allowfullscreen\" value=\"false\"></param>
+              <param name=\"allowscriptaccess\" value=\"always\"></param>
+              <param name=\"play\" value=\"false\"></param>
+              <param name=\"loop\" value=\"false\"></param>
+              <param name=\"bgcolor\" value=\"#000000\"></param>
+              <embed src=$video_sidebar_url.\"?fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\"   allowfullscreen=\"false\" width=\"200\" hspace=\"1\" vspace=\"1\" height=\"190\" play=\"false\" loop=\"false\" bgcolor=\"#000000\" align=\"l\"></embed>
+              </object></div>";
+
+     echo $side_video;
+   } else {echo '';}} else {echo '';}
+     echo $after_widget;
+   }
+
+   function form($instance)  {
+
+   }
+
+
+   function update($new_instance, $old_instance) {
+    return $instance;
+   }
+  }
+
 
   function my_beautiful_tubes_deactivate(){
      $theseblog = get_bloginfo('url');
