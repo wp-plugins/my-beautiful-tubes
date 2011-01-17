@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://todayprofits.gadgets-code.com/2011/01/13/my-beautiful-tubes-version-1-5/
-Description: A plugin which allows blogger to embed youtube video on the post
-Version: 1.5
+Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
+Description: A plugin which allows blogger to embed youtube video on the post and page
+Version: 1.6
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -37,7 +37,6 @@ function my_beautiful_tubes_meta_box_init() {
 
 
 function tube_meta_box($post,$box) {
-
 
   $tube_url = get_post_meta($post->ID,'_tubes_url',true);
   $tube_wt = get_post_meta($post->ID,'_tubes_wt',true);
@@ -127,10 +126,12 @@ function displays_video($content) {
            if($vidurl_youtubes==1) {
 
              $vidtu1 = $v_match1[0];
+
              $vid_imgids = preg_match("/\=\w+/",$vidtu1,$v_match2);
              $video_image_id = $v_match2[0];
              $video_image_id = str_replace("=","",$video_image_id);
              $youtubes_imgs[$tbs] = "http://img.youtube.com/vi/".$video_image_id."/1.jpg";
+
           } else {continue;}}}
 
           if($video_position=='top-left') {
@@ -147,11 +148,12 @@ function displays_video($content) {
                        }
                        $addup.="</select></form>";}else{$addup.="";}
 
-                       if($youtube_share_links[0]!=''){
+                       if($youtubes_imgs[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
-                       $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -171,11 +173,12 @@ function displays_video($content) {
                        }
                        $addup.="</select></form>";}else{$addup.="";}
 
-                       if($youtube_share_links[0]!=''){
+                       if($youtubes_imgs[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
-                       $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -195,12 +198,12 @@ function displays_video($content) {
                        }
                        $addup.="</select></form>";}else{$addup.="";}
 
-                       if($youtube_share_links[0]!=''){
-                       $addup_two.="<div style='width:$imgvd_W;'>";
+                       if($youtubes_imgs[0]!=''){
+                       $addup_two.="<div title='hey' style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
-                       $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -220,12 +223,12 @@ function displays_video($content) {
                        }
                        $addup.="</select></form>";}else{$addup.="";}
 
-                       if($youtube_share_links[0]!=''){
+                       if($youtubes_imgs[0]!=''){
                        $addup_two.="<div style='width:$imgvd_W;'>";
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
-                       $addup_two.="<img style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -237,26 +240,6 @@ function displays_video($content) {
 
 }
 
-
-  function change_video() {
-
-   echo '<script type="text/javascript">
-         function change_url(elem) {
-           var video_img_url = elem.src;
-           var video_img_id_array = /http:\/\/img.youtube.com\/vi\/(\w+)\/1\.jpg/.exec(video_img_url);
-           var video_img_id = video_img_id_array[1];
-           var video_tube_url = "http://www.youtube.com/v/"+video_img_id+"?fs=1&amp;hl=en_US";
-           var le_parent = elem.parentNode.parentNode;
-           var video_object = le_parent.childNodes[0];
-           var video_param = video_object.childNodes[0];
-           var video_embed = video_object.childNodes[4];
-           video_param.value = video_tube_url;
-           video_embed.src = video_tube_url;
-          }
-         </script>';
-  }
-
-  add_action('wp_footer','change_video');
   add_filter('the_content','displays_video');
 
   function my_bea_video_init() {
@@ -324,4 +307,48 @@ function displays_video($content) {
     register_deactivation_hook(__FILE__,'my_beautiful_tubes_deactivate');
     register_activation_hook(__FILE__,'my_beautiful_tubes_activate');
 
+   function related_articles($atts,$content=null) {
+
+extract(shortcode_atts(array("numstoshow"=>'1',"catename"=>'',"wid"=>'500',"float"=>'',"bgcolor"=>'white',"textcolor"=>'black'),$atts));
+
+   global $post;
+   $relarticles = get_posts('numberposts='.$numstoshow.'&order=DESC&orderby=post_date&category_name='.$catename);
+
+   $divlayout='<div class="relatedposts" style="width: '.$wid.'px;float:'.$float.';background:'.$bgcolor.';color:'.$textcolor.';margin-top:7px;margin-right:1px;margin-left:1px;margin-bottom:3px;padding:10px;font-weight:bold;text-align:justify;">';
+   foreach($relarticles as $post) :
+      setup_postdata($post);
+      $divlayout.='<a style="color: '.$textcolor.';" href="'.get_permalink().'">'.the_title("","",false).'</a><br/>'.get_the_excerpt().'<br/>';
+    endforeach;
+   $divlayout.='</div>';
+   return $divlayout;
+}
+
+   add_shortcode("relpost","related_articles");
+
+   function loading_jq() {
+    if(!is_admin()){
+     wp_enqueue_script( 'jquery');
+    }
+   }
+
+    add_action('init','loading_jq');
+
+    function image_clicks() {
+
+     echo '<script type="text/javascript">
+           jQuery(document).ready(function() {
+           jQuery("img#shv").click(function(event) {
+           jQuery(this).fadeOut(5500);
+           var imgsrc = jQuery(this).attr("src");
+           var video_img_id_array = /http:\/\/img.youtube.com\/vi\/(\w+)\/1\.jpg/.exec(imgsrc);
+           var video_img_id = video_img_id_array[1];
+           var video_tube_url = "http://www.youtube.com/v/"+video_img_id+"?fs=1&amp;hl=en_US";
+           jQuery(this).parent().parent().children().children().attr("value",video_tube_url);
+           jQuery(this).parent().parent().children().children("embed").attr("src",video_tube_url);
+           });
+         });
+         </script>';
+   }
+
+    add_action('wp_footer','image_clicks');
 ?>

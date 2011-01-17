@@ -1,22 +1,24 @@
 === my beautiful tubes ===
 Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
-Tags: wordpress, Post, google, plugin, posts, admin, video, content, media, page, pages, youtube, twitter 
+Tags:update,url,user,users,video,widget,widgets,thumbnail,text,title,wordpress,Post,google,plugin,posts,admin,content,media,page,pages,youtube,administration,api,blog,blogroll,button,categories,category,cms,code,content,css,custom,edit,editor,embed,excerpt,html,image,images,integration,javascript,jquery,free,link,links,list,media,photo,photos,picture,pictures,plugins,related,Share,sharing,shortcode,sidebar,simple,videos
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv2
 
-my beautiful tubes is a plugin which allows you to post video on your content in different positions.
+my beautiful tubes is a plugin which allows you to post youtube video on your content in different positions.
 
 == Description ==
 
-This plugin allows you to insert youtube video into your post at any of these four positions (top-left,bottom-right,top-right,bottom-left).
-No short code requires, just insert your youtube video link, for example http://www.youtube.com/watch?v=RR2VpDIo8kc into the 'Video URL' text box under
-'Enter Youtube Video Share Link' which is located under the right-hand-side-bar of wordpress edit post panel. Everytime you write a new post
-and decided to insert youtube video into that post, all you need to do is to insert the youtube video link plus select the video's position and set the width and height of that video, then
-publish it together with your new post! If you want to take out that video later on, then all you need is just to
-leave the 'Video URL' text box blank when you edit your post, after you have updated your post, the video will no longer be there, just that simple.
+This plugin allows you to insert youtube video into your post at any of these four positions (top-left,bottom-right,top-right,bottom-left). This plugin also allows you to
+1) Insert video into the post and page with selection box, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/14/my-beautiful-tubes-the-selection-box/
+2) Insert video into the post and page with video images, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/14/my-beautiful-tubes-images/
+3) Insert video into the sidebar of a particular post or page, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/13/my-beautiful-tubes-version-1-5/ 
+4) Insert related posts (as many groups as you like) anywhere within your post content using shortcode, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/    
+5) If you do not want to include any of the above mention features on any of your content and all you want is to insert a single video on your post, then read here http://todayprofits.gadgets-code.com/2011/01/14/my-beautiful-tubes-putting-all-together/
+
+You can use any of the above mentioned features separately or combine them together as you wish, all these features are actually independent from each other.  
   
 == Frequently Asked Questions == 
 
@@ -50,6 +52,11 @@ You can visit my main plugins page and leave your question under post comment an
 2) Then follow the instructions under FAQ to insert the video.
 
 == Changelog ==
+
+= 1.6 =
+
+* Allow user to include related posts in their content
+* The improvement version of video image has been introduced
 
 = 1.5 =
 
