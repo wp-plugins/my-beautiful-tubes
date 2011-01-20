@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6
+Version: 1.6.1
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -323,7 +323,22 @@ extract(shortcode_atts(array("numstoshow"=>'1',"catename"=>'',"wid"=>'500',"floa
    return $divlayout;
 }
 
+   function twitterB() {
+
+   return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
+   }
+
+   function face_likes() {
+
+   $the_art_url = get_the_ID();
+   $the_art_link = get_permalink($the_art_url);
+   $the_art_link=urlencode($the_art_link);
+   return '<iframe src="http://www.facebook.com/plugins/like.php?href='.$the_art_link.'&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>';
+   }
+
    add_shortcode("relpost","related_articles");
+   add_shortcode("facebooklikes","face_likes");
+   add_shortcode("twtbutton","twitterB");
 
    function loading_jq() {
     if(!is_admin()){
