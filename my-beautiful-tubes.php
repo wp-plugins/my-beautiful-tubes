@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.1
+Version: 1.6.2
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -307,38 +307,27 @@ function displays_video($content) {
     register_deactivation_hook(__FILE__,'my_beautiful_tubes_deactivate');
     register_activation_hook(__FILE__,'my_beautiful_tubes_activate');
 
-   function related_articles($atts,$content=null) {
-
-extract(shortcode_atts(array("numstoshow"=>'1',"catename"=>'',"wid"=>'500',"float"=>'',"bgcolor"=>'white',"textcolor"=>'black'),$atts));
-
-   global $post;
-   $relarticles = get_posts('numberposts='.$numstoshow.'&order=DESC&orderby=post_date&category_name='.$catename);
-
-   $divlayout='<div class="relatedposts" style="width: '.$wid.'px;float:'.$float.';background:'.$bgcolor.';color:'.$textcolor.';margin-top:7px;margin-right:1px;margin-left:1px;margin-bottom:3px;padding:10px;font-weight:bold;text-align:justify;">';
-   foreach($relarticles as $post) :
-      setup_postdata($post);
-      $divlayout.='<a style="color: '.$textcolor.';" href="'.get_permalink().'">'.the_title("","",false).'</a><br/>'.get_the_excerpt().'<br/>';
-    endforeach;
-   $divlayout.='</div>';
-   return $divlayout;
-}
-
    function twitterB() {
-
-   return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
-   }
-
-   function face_likes() {
 
    $the_art_url = get_the_ID();
    $the_art_link = get_permalink($the_art_url);
    $the_art_link=urlencode($the_art_link);
-   return '<iframe src="http://www.facebook.com/plugins/like.php?href='.$the_art_link.'&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>';
+
+   return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'.'<iframe src="http://www.facebook.com/plugins/like.php?href='.$the_art_link.'&amp;layout=standard&amp;show_faces=false&amp;width=43&amp;action=like&amp;colorscheme=light&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:43px; height:20px;" allowTransparency="true"></iframe>'."<a href=\"javascript:void(window.open('http://www.myspace.com/Modules/PostTo/Pages/?u='+encodeURIComponent(document.location.toString()),'ptm','height=450,width=550').focus())\">
+    <img src=\"http://cms.myspacecdn.com/cms//ShareOnMySpace/Myspace_btn_Share.png\" border=\"0\" alt=\"Share on Myspace\" />
+</a>"."<script type=\"text/javascript\">
+      (function() {
+      var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'http://widgets.digg.com/buttons.js';
+      s1.parentNode.insertBefore(s, s1);
+      })();
+      </script>
+      <a class=\"DiggThisButton DiggIcon\"></a>";
    }
 
-   add_shortcode("relpost","related_articles");
-   add_shortcode("facebooklikes","face_likes");
-   add_shortcode("twtbutton","twitterB");
+   add_shortcode("socialButtons","twitterB");
 
    function loading_jq() {
     if(!is_admin()){
