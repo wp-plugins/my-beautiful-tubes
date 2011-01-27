@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.2
+Version: 1.6.3
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -103,7 +103,7 @@ function displays_video($content) {
    $youtubes_imgs = array();
    $imgvd_W = ($vd_W)."px";
 
-   if (is_single() || is_home() || is_page() ) {
+   if (is_single() || is_page() ) {
 
 
         $vidurl = preg_match("/(http:\/\/)\w+\.\w+\.\w+\/watch\?v\=\w+/",$video_url,$v_match);
@@ -136,7 +136,7 @@ function displays_video($content) {
 
           if($video_position=='top-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:5px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:5px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"false\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"false\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
 
            if($sel_description[0]!=''){
            $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
@@ -161,7 +161,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='top-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:5px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:5px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"false\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"false\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
 
           if($sel_description[0]!=''){
           $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
@@ -186,7 +186,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='bottom-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:3px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:3px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"false\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"false\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
 
            if($sel_description[0]!=''){
            $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option  value=\"\">$tube_sel_title</option>";
@@ -211,7 +211,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='bottom-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:3px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
+           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:3px;margin-bottom:1px;\">"."<object width=$vd_W height=$vd_H><param name=\"movie\" value=$vidtube></param><param name=\"allowFullScreen\" value=\"false\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><param name=\"bgcolor\" value=\"#000000\"></param><embed src=$vidtube type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"false\" width=$vd_W height=$vd_H bgcolor=\"#000000\"></embed></object>";
 
            if($sel_description[0]!=''){
            $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
@@ -275,7 +275,7 @@ function displays_video($content) {
               <param name=\"play\" value=\"false\"></param>
               <param name=\"loop\" value=\"false\"></param>
               <param name=\"bgcolor\" value=\"#000000\"></param>
-              <embed src=$video_sidebar_url.\"?fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\"   allowfullscreen=\"false\" width=\"200\" hspace=\"1\" vspace=\"1\" height=\"190\" play=\"false\" loop=\"false\" bgcolor=\"#000000\" align=\"l\"></embed>
+              <embed src=$video_sidebar_url.\"?fs=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\"   allowfullscreen=\"false\" width=\"200\" hspace=\"1\" vspace=\"1\" height=\"190\" play=\"false\" loop=\"false\" bgcolor=\"#000000\" align=\"l\"></embed>
               </object></div>";
 
      echo $side_video;
@@ -329,6 +329,25 @@ function displays_video($content) {
 
    add_shortcode("socialButtons","twitterB");
 
+  function youtubeshortcodes($atts,$content=null) {
+
+   extract(shortcode_atts(array("youtubeurl"=>'',"width"=>'',"height"=>''),$atts));
+
+  $youtube_video_url = preg_match("/http:\/\/\w+\.\w+\.\w+\/watch\?v\=(\w+)/",$youtubeurl,$tube_match);
+
+  if($youtube_video_url==1) {
+
+   $tube_share_link = $tube_match[1];
+
+   $iframeV = 'http://www.youtube.com/embed/'.$tube_share_link.'?rel=0&amp;hd=1';
+
+   return '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>';
+
+  } else {return "";}
+ }
+   add_shortcode("youtubeV","youtubeshortcodes");
+
+
    function loading_jq() {
     if(!is_admin()){
      wp_enqueue_script( 'jquery');
@@ -346,7 +365,7 @@ function displays_video($content) {
            var imgsrc = jQuery(this).attr("src");
            var video_img_id_array = /http:\/\/img.youtube.com\/vi\/(\w+)\/1\.jpg/.exec(imgsrc);
            var video_img_id = video_img_id_array[1];
-           var video_tube_url = "http://www.youtube.com/v/"+video_img_id+"?fs=1&amp;hl=en_US";
+           var video_tube_url = "http://www.youtube.com/v/"+video_img_id+"?fs=0&amp;hl=en_US";
            jQuery(this).parent().parent().children().children().attr("value",video_tube_url);
            jQuery(this).parent().parent().children().children("embed").attr("src",video_tube_url);
            });
