@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.3
+Version: 1.6.4
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -360,7 +360,7 @@ function displays_video($content) {
 
      echo '<script type="text/javascript">
            jQuery(document).ready(function() {
-           jQuery("img#shv").click(function(event) {
+           jQuery("img#shv").mouseover(function(event) {
            jQuery(this).fadeOut(5500);
            var imgsrc = jQuery(this).attr("src");
            var video_img_id_array = /http:\/\/img.youtube.com\/vi\/(\w+)\/1\.jpg/.exec(imgsrc);

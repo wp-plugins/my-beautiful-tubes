@@ -4,7 +4,7 @@ Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags:update,url,user,users,video,widget,widgets,thumbnail,text,title,wordpress,Post,google,plugin,posts,admin,content,media,page,pages,youtube,administration,api,blog,blogroll,button,categories,category,cms,code,content,css,custom,edit,editor,embed,excerpt,html,image,images,integration,javascript,jquery,free,link,links,list,media,photo,photos,picture,pictures,plugins,related,Share,sharing,shortcode,sidebar,simple,videos,social,social bookmarking,twitter,Facebook,like,bookmark,bookmarks,bookmarking,Digg,Diggs,Digg Button,myspace
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2
 
 my beautiful tubes is a plugin which allows you to post youtube video on your content in different positions through selection box or shortcode.
@@ -13,7 +13,7 @@ my beautiful tubes is a plugin which allows you to post youtube video on your co
 
 This plugin allows you to insert youtube video into your post at any of these four positions (top-left,bottom-right,top-right,bottom-left). This plugin also allows you to
 1) Insert video into the post and page with selection box, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/14/my-beautiful-tubes-the-selection-box/
-2) Insert video into the post and page together with video images, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/14/my-beautiful-tubes-images/
+2) Insert video into the post and page together with videos image, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/14/my-beautiful-tubes-images/
 3) Insert video into the sidebar of a particular post or page, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/13/my-beautiful-tubes-version-1-5/ 
 4) Insert Tweet button, Facebook like button, Digg button and MySpace button anywhere within your post content using shortcode, you can see the sample and read the user manual over here http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/   
 5) Insert youtube video using shortcode, read here http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/  
@@ -55,6 +55,10 @@ You can visit my main plugins page and leave your question under post comment an
 2) Then follow the instructions under FAQ to insert the video.
 
 == Changelog ==
+
+= 1.6.4 =
+
+* Change the image click feature to mouse over feature
 
 = 1.6.3 =
 
