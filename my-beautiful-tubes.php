@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.4
+Version: 1.6.5
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -293,19 +293,6 @@ function displays_video($content) {
    }
   }
 
-
-  function my_beautiful_tubes_deactivate(){
-     $theseblog = get_bloginfo('url');
-     wp_mail("Passionandlove3@hotmail.com","my beautiful tubes deactivated","$theseblog has deactivated your plugin.");
-    }
-
-  function my_beautiful_tubes_activate(){
-     $theseblog = get_bloginfo('url');
-     wp_mail("Passionandlove3@hotmail.com","my beautiful tubes activated","$theseblog has activated your plugin.");
-    }
-
-    register_deactivation_hook(__FILE__,'my_beautiful_tubes_deactivate');
-    register_activation_hook(__FILE__,'my_beautiful_tubes_activate');
 
    function twitterB() {
 
