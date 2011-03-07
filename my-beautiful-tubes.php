@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.5
+Version: 1.6.6
 Author: Gadgets-Code.Com
 Author URI: http://todayprofits.gadgets-code.com
 */
@@ -361,4 +361,61 @@ function displays_video($content) {
    }
 
     add_action('wp_footer','image_clicks');
+
+    function analytic_create_menu() {
+
+     add_menu_page('Enter Analytics Code','Analytics','administrator',__FILE__.'_analytics','analytic_settings_page');
+     add_action('admin_init','analytic_register_settings');
+
+}
+
+    add_action('admin_menu','analytic_create_menu');
+
+    function analytic_register_settings() {
+
+     register_setting('analytic-settings-group','analytic_code');
+
+}
+
+    function analytic_settings_page() {
+
+?>
+
+   <div class="wrap">
+    <h2><?php _e('Analytics Setting Options Page','analytic-plugin') ?></h2>
+
+    <form method="post" action="options.php">
+    <?php settings_fields('analytic-settings-group'); ?>
+    <table class="form-table">
+
+    <tr valign="top">
+     <th scope="row"><?php _e('Analytics Code :','analytic-plugin') ?></th>
+     <td><textarea name="analytic_code" rows="10" cols="30"><?php echo esc_attr(get_option('analytic_code')); ?></textarea></td>
+    </tr>
+
+    </table>
+
+     <p class="submit">
+      <input type="submit" class="button-primary" value="<?php _e('Save Changes','analytic-plugin') ?>" />
+     </p>
+
+    </form>
+   </div>
+
+<?php }
+
+    add_action('wp_head','add_analytic_code');
+
+    function add_analytic_code() {
+
+      $analytic_code = get_option('analytic_code');
+       if ($analytic_code){
+        echo $analytic_code;} else { echo "" ;}
+     }
+
+    function analytic_deactivate(){
+      delete_option("analytic_code");
+    }
+
+   register_uninstall_hook(__FILE__,'analytic_deactivate');
 ?>
