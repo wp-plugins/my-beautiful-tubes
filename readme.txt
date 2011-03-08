@@ -3,7 +3,7 @@ Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags:update,url,user,users,video,widget,widgets,thumbnail,text,title,wordpress,Post,google,plugin,posts,admin,content,media,page,pages,youtube,administration,api,blog,blogroll,button,categories,category,cms,code,content,css,custom,edit,editor,embed,excerpt,html,image,images,integration,javascript,jquery,free,link,links,list,media,photo,photos,picture,pictures,plugins,related,Share,sharing,shortcode,sidebar,simple,videos,social,social bookmarking,twitter,Facebook,like,bookmark,bookmarks,bookmarking,Digg,Diggs,Digg Button,myspace,analytics,google analytics, statistics
 Requires at least: 2.8
-Tested up to: 3.0
+Tested up to: 3.1
 Stable tag: 1.6.6
 License: GPLv2
 
