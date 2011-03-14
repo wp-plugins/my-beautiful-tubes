@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://todayprofits.gadgets-code.com/2011/01/17/my-beautiful-tubes-version-1-6/
+Plugin URI: http://gadgets-code.com/facebook-likes-short-code-updates-for-plugins
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.6
+Version: 1.6.7
 Author: Gadgets-Code.Com
-Author URI: http://todayprofits.gadgets-code.com
+Author URI: http://gadgets-code.com/
 */
 
 
@@ -300,7 +300,7 @@ function displays_video($content) {
    $the_art_link = get_permalink($the_art_url);
    $the_art_link=urlencode($the_art_link);
 
-   return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'.'<iframe src="http://www.facebook.com/plugins/like.php?href='.$the_art_link.'&amp;layout=standard&amp;show_faces=false&amp;width=43&amp;action=like&amp;colorscheme=light&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:43px; height:20px;" allowTransparency="true"></iframe>'."<a href=\"javascript:void(window.open('http://www.myspace.com/Modules/PostTo/Pages/?u='+encodeURIComponent(document.location.toString()),'ptm','height=450,width=550').focus())\">
+   return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'."<a href=\"javascript:void(window.open('http://www.myspace.com/Modules/PostTo/Pages/?u='+encodeURIComponent(document.location.toString()),'ptm','height=450,width=550').focus())\">
     <img src=\"http://cms.myspacecdn.com/cms//ShareOnMySpace/Myspace_btn_Share.png\" border=\"0\" alt=\"Share on Myspace\" />
 </a>"."<script type=\"text/javascript\">
       (function() {
@@ -334,6 +334,17 @@ function displays_video($content) {
  }
    add_shortcode("youtubeV","youtubeshortcodes");
 
+  function morebuttons() {
+
+   $the_pos_linkk = get_the_ID();
+   $the_post_linking = get_permalink($the_pos_linkk);
+   $the_post_linking=urlencode($the_post_linking);
+
+   return '<iframe src="http://www.facebook.com/plugins/like.php?href='.$the_post_linking.'&amp;layout=standard&amp;show_faces=false&amp;width=480&amp;action=like&amp;colorscheme=light&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:480px; height:20px;" allowTransparency="true"></iframe><br/>';
+
+   }
+
+   add_shortcode("linkB","morebuttons");
 
    function loading_jq() {
     if(!is_admin()){
