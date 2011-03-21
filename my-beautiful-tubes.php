@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/facebook-likes-short-code-updates-for-plugins
+Plugin URI: http://gadgets-code.com/how-to-insert-youtube-video-into-wordpress-blog-sidebar
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.7
+Version: 1.6.8
 Author: Gadgets-Code.Com
 Author URI: http://gadgets-code.com/
 */
@@ -153,7 +153,7 @@ function displays_video($content) {
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
-                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' />";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -178,7 +178,7 @@ function displays_video($content) {
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
-                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' />";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -203,7 +203,7 @@ function displays_video($content) {
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
-                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' />";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -228,7 +228,7 @@ function displays_video($content) {
                        for($show_video_images=0;$show_video_images<sizeof($youtube_share_links);$show_video_images++) {
                        $image_video_link = $youtubes_imgs[$show_video_images];
 
-                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' onclick=\"change_url(this)\"/>";
+                       $addup_two.="<img id='shv' style='float:left;' src='$image_video_link' />";
                        }
                        $addup_two.="</div></div>";}else{$addup_two.="</div>";}
 
@@ -268,14 +268,14 @@ function displays_video($content) {
     $video_sidebar_url = get_post_meta($arti_id,'_tubes_sidebar_link',true);
     $video_sidebar_url = str_replace("=","/",str_replace("watch?","",$video_sidebar_url));
     if($video_sidebar_url){
-    $side_video= "<div style=\"float:left;\"><object width=\"200\" height=\"190\" hspace=\"1\" vspace=\"1\" align=\"l\">
-              <param name=\"movie\" value=$video_sidebar_url.\"?fs=1\"></param>
-              <param name=\"allowfullscreen\" value=\"false\"></param>
+    $side_video= "<div id=\"sidevideo\" style=\"float:left;\"><object width=\"200\" height=\"190\" hspace=\"1\" vspace=\"1\" align=\"l\">
+              <param name=\"movie\" value=$video_sidebar_url.\"?fs=0&autoplay=1&color1=#C0C0C0&color2=#000000\"></param>
+              <param name=\"allowfullscreen\" value=\"true\"></param>
               <param name=\"allowscriptaccess\" value=\"always\"></param>
-              <param name=\"play\" value=\"false\"></param>
+              <param name=\"play\" value=\"true\"></param>
               <param name=\"loop\" value=\"false\"></param>
               <param name=\"bgcolor\" value=\"#000000\"></param>
-              <embed src=$video_sidebar_url.\"?fs=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\"   allowfullscreen=\"false\" width=\"200\" hspace=\"1\" vspace=\"1\" height=\"190\" play=\"false\" loop=\"false\" bgcolor=\"#000000\" align=\"l\"></embed>
+              <embed src=$video_sidebar_url.\"?fs=0&autoplay=1&color1=#C0C0C0&color2=#000000\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\"   allowfullscreen=\"false\" width=\"200\" hspace=\"1\" vspace=\"1\" height=\"190\" play=\"true\" flashvars=\"autoplay=true&play=true\" loop=\"false\" bgcolor=\"#000000\" align=\"l\"></embed>
               </object></div>";
 
      echo $side_video;
@@ -359,17 +359,24 @@ function displays_video($content) {
      echo '<script type="text/javascript">
            jQuery(document).ready(function() {
            jQuery("img#shv").mouseover(function(event) {
-           jQuery(this).fadeOut(5500);
-           var imgsrc = jQuery(this).attr("src");
-           var video_img_id_array = /http:\/\/img.youtube.com\/vi\/(\w+)\/1\.jpg/.exec(imgsrc);
-           var video_img_id = video_img_id_array[1];
-           var video_tube_url = "http://www.youtube.com/v/"+video_img_id+"?fs=0&amp;hl=en_US";
-           jQuery(this).parent().parent().children().children().attr("value",video_tube_url);
-           jQuery(this).parent().parent().children().children("embed").attr("src",video_tube_url);
+            jQuery(this).fadeOut(5500);
+            var imgsrc = jQuery(this).attr("src");
+            var video_img_id_array = /http:\/\/img.youtube.com\/vi\/(\w+)\/1\.jpg/.exec(imgsrc);
+            var video_img_id = video_img_id_array[1];
+            var video_tube_url = "http://www.youtube.com/v/"+video_img_id+"?fs=0&amp;hl=en_US";
+            jQuery(this).parent().parent().children().children().attr("value",video_tube_url);
+            jQuery(this).parent().parent().children().children("embed").attr("src",video_tube_url);
            });
-         });
+
+           jQuery("div#sidevideo").mouseover(function() {
+            var autostart = jQuery(this).children().children().attr("value");
+            var nonautostart = autostart.replace("autoplay=1","autoplay=0");
+            jQuery(this).children().children().attr("value",nonautostart);
+            jQuery(this).children().children("embed").attr("src",nonautostart);
+           });
+          });
          </script>';
-   }
+    }
 
     add_action('wp_footer','image_clicks');
 
