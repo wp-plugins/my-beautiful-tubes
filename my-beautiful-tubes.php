@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/how-to-insert-youtube-video-into-wordpress-blog-sidebar
+Plugin URI: http://gadgets-code.com/my-beautiful-tubes-shortcodes-on-blog-sidebar
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.8
+Version: 1.6.9
 Author: Gadgets-Code.Com
 Author URI: http://gadgets-code.com/
 */
@@ -436,4 +436,7 @@ function displays_video($content) {
     }
 
    register_uninstall_hook(__FILE__,'analytic_deactivate');
+
+   add_filter('widget_text', 'shortcode_unautop');
+   add_filter('widget_text', 'do_shortcode');
 ?>
