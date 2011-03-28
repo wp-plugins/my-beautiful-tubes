@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/my-beautiful-tubes-shortcodes-on-blog-sidebar
+Plugin URI: http://gadgets-code.com/how-to-promote-our-youtube-videos
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.6.9
+Version: 1.7.0
 Author: Gadgets-Code.Com
 Author URI: http://gadgets-code.com/
 */
@@ -328,7 +328,8 @@ function displays_video($content) {
 
    $iframeV = 'http://www.youtube.com/embed/'.$tube_share_link.'?rel=0&amp;hd=1';
 
-   return '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>';
+   return '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>
+<div id="sharecodes" style="display:block;width:'.$width.'px;"><p id="sharesbutton" onClick="sharing(this)" style="background-color:#827839;color:#ffffff;font-weight:bold;padding-left:5px;padding-right:5px;font-size:13px;width:43px;">share</p><textarea rows="2" cols="51" style="display:none;font-size:9px;">&lt;iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen&gt;&lt;/iframe&gt;</textarea></div>';
 
   } else {return "";}
  }
@@ -369,16 +370,25 @@ function displays_video($content) {
            });
 
            jQuery("div#sidevideo").mouseover(function() {
-            var autostart = jQuery(this).children().children().attr("value");
+            var autostart = jQuery("div#sidevideo").children().children().attr("value");
             var nonautostart = autostart.replace("autoplay=1","autoplay=0");
-            jQuery(this).children().children().attr("value",nonautostart);
-            jQuery(this).children().children("embed").attr("src",nonautostart);
+            jQuery("div#sidevideo").children().children().attr("value",nonautostart);
+            jQuery("div#sidevideo").children().children("embed").attr("src",nonautostart);
            });
           });
          </script>';
     }
+    function share_clicks() {
+       echo '<script type="text/javascript">
+             function sharing(sharebutton) {
+              jQuery(sharebutton).parent().children("textarea").slideToggle();
+             }
+             </script>';
+    }
 
     add_action('wp_footer','image_clicks');
+    add_action('wp_footer','share_clicks');
+
 
     function analytic_create_menu() {
 
