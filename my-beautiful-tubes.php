@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://gadgets-code.com/how-to-promote-our-youtube-videos
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.7.0
+Version: 1.7.1
 Author: Gadgets-Code.Com
 Author URI: http://gadgets-code.com/
 */
@@ -318,9 +318,17 @@ function displays_video($content) {
 
   function youtubeshortcodes($atts,$content=null) {
 
-   extract(shortcode_atts(array("youtubeurl"=>'',"width"=>'',"height"=>''),$atts));
+   extract(shortcode_atts(array("youtubeurl"=>'',"width"=>'',"height"=>'', "show"=>''),$atts));
 
   $youtube_video_url = preg_match("/http:\/\/\w+\.\w+\.\w+\/watch\?v\=(\w+)/",$youtubeurl,$tube_match);
+
+  if($show=='') {
+    $displays = "none";
+  } else if ($show == 'yes') {
+    $displays = "block";
+  } else {
+    $displays = "none";
+  }
 
   if($youtube_video_url==1) {
 
@@ -329,7 +337,7 @@ function displays_video($content) {
    $iframeV = 'http://www.youtube.com/embed/'.$tube_share_link.'?rel=0&amp;hd=1';
 
    return '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>
-<div id="sharecodes" style="display:block;width:'.$width.'px;"><p id="sharesbutton" onClick="sharing(this)" style="background-color:#827839;color:#ffffff;font-weight:bold;padding-left:5px;padding-right:5px;font-size:13px;width:43px;">share</p><textarea rows="2" cols="51" style="display:none;font-size:9px;">&lt;iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen&gt;&lt;/iframe&gt;</textarea></div>';
+<div id="sharecodes" style="display:'.$displays.';width:'.$width.'px;cursor:pointer;"><p id="sharesbutton" onClick="sharing(this)" style="background-color:#827839;color:#ffffff;font-weight:bold;padding-left:5px;padding-right:5px;font-size:13px;width:43px;">share</p><textarea rows="2" cols="51" style="display:none;font-size:9px;">&lt;iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen&gt;&lt;/iframe&gt;</textarea></div>';
 
   } else {return "";}
  }
