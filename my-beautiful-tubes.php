@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/how-to-promote-our-youtube-videos
+Plugin URI: http://gadgets-code.com/my-beautiful-tubes-v-1-7-2
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.7.1
+Version: 1.7.2
 Author: Gadgets-Code.Com
-Author URI: http://gadgets-code.com/
+Author URI: http://profiles.wordpress.org/users/GadgetsChoose/
 */
 
 
@@ -454,7 +454,7 @@ function displays_video($content) {
     }
 
    register_uninstall_hook(__FILE__,'analytic_deactivate');
-
+   add_filter( 'comment_text', 'do_shortcode' );
    add_filter('widget_text', 'shortcode_unautop');
    add_filter('widget_text', 'do_shortcode');
 ?>
