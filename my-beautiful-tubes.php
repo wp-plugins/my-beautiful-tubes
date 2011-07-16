@@ -1,13 +1,12 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/my-beautiful-tubes-v-1-7-2
+Plugin URI: http://todayprofits.gadgets-code.com/2011/07/16/my-beautiful-tubes-version-1-7-3/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.7.2
+Version: 1.7.3
 Author: Gadgets-Code.Com
 Author URI: http://profiles.wordpress.org/users/GadgetsChoose/
 */
-
 
 /* Copyright 2010 Gadgets-Code.Com (e-mail : morning131@hotmail.com)
 
@@ -336,8 +335,10 @@ function displays_video($content) {
 
    $iframeV = 'http://www.youtube.com/embed/'.$tube_share_link.'?rel=0&amp;hd=1';
 
-   return '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>
-<div id="sharecodes" style="display:'.$displays.';width:'.$width.'px;cursor:pointer;"><p id="sharesbutton" onClick="sharing(this)" style="background-color:#827839;color:#ffffff;font-weight:bold;padding-left:5px;padding-right:5px;font-size:13px;width:43px;">share</p><textarea rows="2" cols="51" style="display:none;font-size:9px;">&lt;iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen&gt;&lt;/iframe&gt;</textarea></div>';
+   return '<div style="float:left;padding-right:2px;"><div><a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$youtubeurl.'" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>'.
+'<div><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="'.$youtubeurl.'" send="false" layout="box_count" width="30" show_faces="false" font="arial"></fb:like></div></div>'.
+'<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>'.
+'<div id="sharecodes" style="display:'.$displays.';width:'.$width.'px;cursor:pointer;margin-left:59px;"><p id="sharesbutton" onClick="sharing(this)" style="background-color:#827839;color:#ffffff;font-weight:bold;padding-left:5px;padding-right:5px;font-size:13px;width:43px;">share</p><textarea rows="2" cols="51" style="display:none;font-size:9px;">&lt;iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen&gt;&lt;/iframe&gt;</textarea></div>';
 
   } else {return "";}
  }
