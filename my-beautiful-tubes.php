@@ -1,11 +1,12 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://todayprofits.gadgets-code.com/2011/07/16/my-beautiful-tubes-version-1-7-3/
+Plugin URI: http://gadgets-code.com/my-beautiful-tubes-1-7-4/
 Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.7.3
+Version: 1.7.4
 Author: Gadgets-Code.Com
 Author URI: http://profiles.wordpress.org/users/GadgetsChoose/
+License: GPLv2
 */
 
 /* Copyright 2010 Gadgets-Code.Com (e-mail : morning131@hotmail.com)
@@ -356,6 +357,26 @@ function displays_video($content) {
 
    add_shortcode("linkB","morebuttons");
 
+   add_shortcode('likeVideos','show_like_video');
+
+   function show_like_video($attr) {
+
+    if(isset($attr['key'])) {
+       $you_like_video = $attr['key'];
+     } else {
+       $content = '';
+     }
+
+    if(isset($attr['title'])) {
+       $you_like_title = $attr['title'];
+     } else {
+       $you_like_title = 'click here!';
+     }
+
+     return "<div id=\"likeit\" style=\"cursor: pointer;\">$you_like_title</div><div id=\"showLikeVideo\" style=\"display:none;\"><iframe width=\"560\" height=\"315\" src=\"http://www.youtube.com/embed/$you_like_video\" frameborder=\"0\" allowfullscreen></iframe></div>";
+
+   }
+
    function loading_jq() {
     if(!is_admin()){
      wp_enqueue_script( 'jquery');
@@ -395,9 +416,20 @@ function displays_video($content) {
              </script>';
     }
 
+    function likeVideo_click() {
+
+       echo '<script>
+              jQuery(document).ready(function() {
+                 jQuery(\'#likeit\').click(function() {
+                   jQuery(\'#likeit\').hide();
+                   jQuery(\'#showLikeVideo\').show();
+                 });
+               });</script>';
+    }
+
     add_action('wp_footer','image_clicks');
     add_action('wp_footer','share_clicks');
-
+    add_action('wp_footer','likeVideo_click');
 
     function analytic_create_menu() {
 
