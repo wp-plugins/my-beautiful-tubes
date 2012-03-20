@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: my beautiful tubes
-Plugin URI: http://gadgets-code.com/my-beautiful-tubes-1-7-4/
-Description: A plugin which allows blogger to embed youtube video on the post and page
-Version: 1.7.5
+Plugin URI: http://gadgets-code.com/my-beautiful-tubes-tutorial-part-1-how-to-insert-video-images-under-your-video/
+Description: A plugin which allows blogger to embed youtube videos on the post and page
+Version: 1.7.6
 Author: Gadgets-Code.Com
-Author URI: http://profiles.wordpress.org/users/GadgetsChoose/
+Author URI: https://plus.google.com/b/100673180703646429119/
 License: GPLv2
 */
 
@@ -285,70 +285,6 @@ function displays_video($content) {
    }
   }
 
-
-   function twitterB() {
-
-   $the_art_url = get_the_ID();
-   $the_art_link = get_permalink($the_art_url);
-   $the_art_link=urlencode($the_art_link);
-
-   return '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'."<a href=\"javascript:void(window.open('http://www.myspace.com/Modules/PostTo/Pages/?u='+encodeURIComponent(document.location.toString()),'ptm','height=450,width=550').focus())\">
-    <img src=\"http://cms.myspacecdn.com/cms//ShareOnMySpace/Myspace_btn_Share.png\" border=\"0\" alt=\"Share on Myspace\" />
-</a>"."<script type=\"text/javascript\">
-      (function() {
-      var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = 'http://widgets.digg.com/buttons.js';
-      s1.parentNode.insertBefore(s, s1);
-      })();
-      </script>
-      <a class=\"DiggThisButton DiggIcon\"></a>";
-   }
-
-   add_shortcode("socialButtons","twitterB");
-
-  function youtubeshortcodes($atts,$content=null) {
-
-   extract(shortcode_atts(array("youtubeurl"=>'',"width"=>'',"height"=>'', "show"=>''),$atts));
-
-  $youtube_video_url = preg_match("/http:\/\/\w+\.\w+\.\w+\/watch\?v\=(\w+)/",$youtubeurl,$tube_match);
-
-  if($show=='') {
-    $displays = "none";
-  } else if ($show == 'yes') {
-    $displays = "block";
-  } else {
-    $displays = "none";
-  }
-
-  if($youtube_video_url==1) {
-
-   $tube_share_link = $tube_match[1];
-
-   $iframeV = 'http://www.youtube.com/embed/'.$tube_share_link.'?rel=0&amp;hd=1';
-
-   return '<div style="float:left;padding-right:2px;"><div><a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$youtubeurl.'" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>'.
-'<div><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="'.$youtubeurl.'" send="false" layout="box_count" width="30" show_faces="false" font="arial"></fb:like></div></div>'.
-'<iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen></iframe>'.
-'<div id="sharecodes" style="display:'.$displays.';width:'.$width.'px;cursor:pointer;margin-left:59px;"><p id="sharesbutton" onClick="sharing(this)" style="background-color:#827839;color:#ffffff;font-weight:bold;padding-left:5px;padding-right:5px;font-size:13px;width:43px;">share</p><textarea rows="2" cols="51" style="display:none;font-size:9px;">&lt;iframe title="YouTube video player" class="youtube-player" type="text/html" width="'.$width.'"  height="'.$height.'" src="'.$iframeV.'" frameborder="0" allowFullScreen&gt;&lt;/iframe&gt;</textarea></div>';
-
-  } else {return "";}
- }
-   add_shortcode("youtubeV","youtubeshortcodes");
-
-  function morebuttons() {
-
-   $the_pos_linkk = get_the_ID();
-   $the_post_linking = get_permalink($the_pos_linkk);
-   $the_post_linking=urlencode($the_post_linking);
-
-   return '<iframe src="http://www.facebook.com/plugins/like.php?href='.$the_post_linking.'&amp;layout=standard&amp;show_faces=false&amp;width=480&amp;action=like&amp;colorscheme=light&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:480px; height:20px;" allowTransparency="true"></iframe><br/>';
-
-   }
-
-   add_shortcode("linkB","morebuttons");
-
    add_shortcode('likeVideos','show_like_video');
 
    function show_like_video($attr) {
@@ -393,14 +329,6 @@ function displays_video($content) {
          </script>';
     }
 
-    function share_clicks() {
-       echo '<script type="text/javascript">
-             function sharing(sharebutton) {
-              jQuery(sharebutton).parent().children("textarea").slideToggle();
-             }
-             </script>';
-    }
-
     function likeVideo_click() {
 
        echo '<script>
@@ -430,11 +358,6 @@ function displays_video($content) {
      ) );
      echo '</div>';
    }
-
    add_action('wp_footer','image_clicks');
-   add_action('wp_footer','share_clicks');
    add_action('wp_footer','likeVideo_click');
-   add_filter( 'comment_text', 'do_shortcode' );
-   add_filter('widget_text', 'shortcode_unautop');
-   add_filter('widget_text', 'do_shortcode');
 ?>
