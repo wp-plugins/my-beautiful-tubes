@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://gadgets-code.com/my-beautiful-tubes-tutorial-part-1-how-to-insert-video-images-under-your-video/
 Description: A plugin which allows blogger to embed youtube videos on the post and page
-Version: 1.7.6
+Version: 1.7.7
 Author: Gadgets-Code.Com
 Author URI: https://plus.google.com/b/100673180703646429119/
 License: GPLv2
@@ -292,7 +292,7 @@ function displays_video($content) {
     if(isset($attr['key'])) {
        $you_like_video = $attr['key'];
      } else {
-       $content = '';
+       return;
      }
 
     if(isset($attr['title'])) {
@@ -301,7 +301,19 @@ function displays_video($content) {
        $you_like_title = 'click here!';
      }
 
-     return "<div id=\"likeit\" style=\"cursor: pointer;\">$you_like_title</div><div id=\"showLikeVideo\" style=\"display:none;\"><iframe width=\"560\" height=\"315\" src=\"http://www.youtube.com/embed/$you_like_video\" frameborder=\"0\" allowfullscreen></iframe></div>";
+     if(isset($attr['width'])) {
+       $vw = $attr['width'];
+     } else {
+       $vw = 560;
+     }
+
+     if(isset($attr['height'])) {
+       $vh = $attr['height'];
+     } else {
+       $vh = 315;
+     }
+
+     return "<div id=\"likeit\" style=\"cursor: pointer;\">$you_like_title</div><div id=\"showLikeVideo\" style=\"display:none;\"><iframe width=\"$vw\" height=\"$vh\" src=\"http://www.youtube.com/embed/$you_like_video\" frameborder=\"0\" allowfullscreen></iframe></div>";
 
    }
 
