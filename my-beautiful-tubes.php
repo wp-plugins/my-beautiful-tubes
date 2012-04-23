@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://gadgets-code.com/my-beautiful-tubes-tutorial-part-1-how-to-insert-video-images-under-your-video/
 Description: A plugin which allows blogger to embed youtube videos on the post and page
-Version: 1.7.7
+Version: 1.7.8
 Author: Gadgets-Code.Com
 Author URI: https://plus.google.com/b/100673180703646429119/
 License: GPLv2
@@ -134,7 +134,7 @@ function displays_video($content) {
 
           if($video_position=='top-left') {
 
-           $vidtubes = "<div style=\"float:left;margin-right:2px;margin-top:5px;margin-bottom:1px;\">"."<iframe width=$vd_W height=$vd_H src=\"http://www.youtube.com/embed/$vidtube\" frameborder=\"0\" allowfullscreen></iframe>";
+           $vidtubes = "<div style=\"float:left;margin-right:6px;margin-top:15px;margin-bottom:1px;\">"."<iframe width=$vd_W height=$vd_H src=\"http://www.youtube.com/embed/$vidtube\" frameborder=\"0\" allowfullscreen></iframe>";
 
            if($sel_description[0]!=''){
             $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
@@ -159,7 +159,7 @@ function displays_video($content) {
 
            } elseif ($video_position=='top-right') {
 
-           $vidtubes = "<div style=\"float:right;margin-left:2px;margin-top:5px;margin-bottom:1px;\">"."<iframe width=$vd_W height=$vd_H src=\"http://www.youtube.com/embed/$vidtube\" frameborder=\"0\" allowfullscreen></iframe>";
+           $vidtubes = "<div style=\"float:right;margin-left:6px;margin-top:15px;margin-bottom:1px;\">"."<iframe width=$vd_W height=$vd_H src=\"http://www.youtube.com/embed/$vidtube\" frameborder=\"0\" allowfullscreen></iframe>";
 
           if($sel_description[0]!=''){
            $addup.= "<br/><form><select onchange=\"location.href=this.options[this.selectedIndex].value;\" size=\"1\" style=\"background:grey;color:white;font-size:17px;\"><option value=\"\">$tube_sel_title</option>";
@@ -258,21 +258,18 @@ function displays_video($content) {
 
   function widget($args, $instance) {
     extract($args);
-    echo $before_widget;
-
     if(is_single() || is_page()) {
-
      $arti_id = get_the_ID();
      $video_sidebar_url = get_post_meta($arti_id,'_tubes_sidebar_link',true);
      $vidurl = preg_match("/http:\/\/youtu.be\/[-\.\w]+/",$video_sidebar_url,$v_match);
       if($vidurl==1) {
+        echo $before_widget;
         $vidtu = $v_match[0];
         $vidtu = str_replace("http://youtu.be/","",$vidtu);
         $side_video = "<div id=\"sidevideo\" style=\"float:left;margin-left:3px;\"><iframe width='250' height='200' src=\"http://www.youtube.com/embed/$vidtu\" frameborder=\"0\" allowfullscreen></iframe></div>";
         echo $side_video;
+        echo $after_widget;
       } else {echo '';}} else {echo '';}
-
-     echo $after_widget;
    }
 
    function form($instance)  {
