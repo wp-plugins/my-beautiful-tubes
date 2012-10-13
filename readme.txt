@@ -3,11 +3,11 @@ Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags:update,url,user,users,video,widget,widgets,thumbnail,text,title,wordpress,Post,google,plugin,posts,admin,content,media,page,pages,youtube,administration,api,blog,blogroll,button,categories,category,cms,code,content,css,custom,edit,editor,embed,excerpt,html,image,images,integration,javascript,jquery,free,link,links,list,media,photo,photos,picture,pictures,plugins,related,Share,sharing,shortcode,sidebar,simple,videos,social,social bookmarking,twitter,Facebook,like,bookmark,bookmarks,bookmarking,Digg,Diggs,Digg Button,myspace,analytics,google analytics, statistics
 Requires at least: 2.8
-Tested up to: 3.3.2
-Stable tag: 1.7.8
+Tested up to: 3.5
+Stable tag: 1.7.9
 License: GPLv2
 
-my beautiful tubes is a plugin which allows you to post youtube video on your content in different positions through selection box or shortcode.
+my beautiful tubes is a plugin which allows you to post youtube video on your post content in different positions through selection box or shortcode.
 
 == Description ==
 
@@ -50,6 +50,10 @@ You can visit my main plugins page and leave your question under post comment an
 Please upgrade immediately to enjoy the new features introduce by this latest version.
 
 == Changelog ==
+
+= 1.7.9 =
+
+* Remove dashboard widget
 
 = 1.7.8 =
 

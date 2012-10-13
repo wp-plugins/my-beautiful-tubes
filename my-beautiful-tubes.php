@@ -3,9 +3,9 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://gadgets-code.com/my-beautiful-tubes-tutorial-part-1-how-to-insert-video-images-under-your-video/
 Description: A plugin which allows blogger to embed youtube videos on the post and page
-Version: 1.7.8
+Version: 1.7.9
 Author: Gadgets-Code.Com
-Author URI: https://plus.google.com/b/100673180703646429119/
+Author URI: http://gadgets-code.com
 License: GPLv2
 */
 
@@ -266,7 +266,7 @@ function displays_video($content) {
         echo $before_widget;
         $vidtu = $v_match[0];
         $vidtu = str_replace("http://youtu.be/","",$vidtu);
-        $side_video = "<div id=\"sidevideo\" style=\"float:left;margin-left:3px;\"><iframe width='250' height='200' src=\"http://www.youtube.com/embed/$vidtu\" frameborder=\"0\" allowfullscreen></iframe></div>";
+        $side_video = "<div id=\"sidevideo\"><iframe width='250' height='200' src=\"http://www.youtube.com/embed/$vidtu\" frameborder=\"0\" allowfullscreen></iframe></div>";
         echo $side_video;
         echo $after_widget;
       } else {echo '';}} else {echo '';}
@@ -349,24 +349,6 @@ function displays_video($content) {
                });</script>';
     }
 
-   add_action( 'wp_dashboard_setup', 'gadgets_dashboard_widgets' );
-   function gadgets_dashboard_widgets() {
-     wp_add_dashboard_widget( 'dashboard_gadgets_feed', 'Developer News', 'gadgets_dashboard_feed');
-   }
-   function gadgets_dashboard_feed() {
-     $gadgets_rss_feed = 'http://gadgets-code.com/feed';
-     //show developer RSS feed
-     echo '<div class="rss-widget">';
-     wp_widget_rss_output( array(
-      'url' => $gadgets_rss_feed,
-      'title' => 'Developer News',
-      'items' => 1,
-      'show_summary' => 1,
-      'show_author' => 0,
-      'show_date' => 1
-     ) );
-     echo '</div>';
-   }
    add_action('wp_footer','image_clicks');
    add_action('wp_footer','likeVideo_click');
 ?>
