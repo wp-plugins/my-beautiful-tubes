@@ -1,41 +1,23 @@
 === my beautiful tubes ===
 Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
-Tags:update,url,user,users,video,widget,widgets,thumbnail,text,title,wordpress,Post,google,plugin,posts,admin,content,media,page,pages,youtube,administration,api,blog,blogroll,button,categories,category,cms,code,content,css,custom,edit,editor,embed,excerpt,html,image,images,integration,javascript,jquery,free,link,links,list,media,photo,photos,picture,pictures,plugins,related,Share,sharing,shortcode,sidebar,simple,videos,social,social bookmarking,twitter,Facebook,like,bookmark,bookmarks,bookmarking,Digg,Diggs,Digg Button,myspace,analytics,google analytics, statistics
+Tags: sidebar, search engine optimization, seo, facebook, video, widget, widgets, wordpress ,Post, google, plugin, posts, admin, page, pages, youtube, api, blog, content, embed, link, links, media, plugins, related, Share, sharing, videos, Facebook
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 1.7.9
+Stable tag: 1.8.0
 License: GPLv2
 
-my beautiful tubes is a plugin which allows you to post youtube video on your post content in different positions through selection box or shortcode.
+A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
 
 == Description ==
 
-This plugin allows you to insert youtube video into your post at any of these four positions (top-left,bottom-right,top-right,bottom-left). You can see the sample in action over here http://gadgets-code.com/my-beautiful-tubes-tutorial-part-1-how-to-insert-video-images-under-your-video/
-
-[youtube http://www.youtube.com/watch?v=DpP777UvaPA]  
+This plugin allows you to insert youtube videos into your post and get more video views on Facebook. You can see the sample in action over here http://gadgets-code.com/my-beautiful-tubes-tutorial
   
 == Frequently Asked Questions == 
 
-= Where is the 'my beautiful tubes' setting panel located? = 
- 
-It is on the right-hand-side-bar of your WordPress edit post panel.        
-
-= How to insert the video? = 
-
-1) Enter youtube share link into 'Video URL' text box. 2) Select any of the four video positions plus input the video's height and width which you prefer and publish your post.
-
-= Can I change the video later on? =
-
-Sure, you can delete the old video link and enter the new link then update your post.
-
 = Is this plugin only for Youtube? = 
 
-Yes it is!
-
-= Can I reset the video position and size? =
-
-Sure you can, but please update your post later on. 
+Yes, at the moment. 
 
 = If I have problem using this plugin, where can I ask for help? =
 
@@ -47,9 +29,16 @@ You can visit my main plugins page and leave your question under post comment an
 
 == Upgrade Notice ==
 
-Please upgrade immediately to enjoy the new features introduce by this latest version.
+Please upgrade immediately to enjoy the new features included in this latest version.
 
 == Changelog ==
+
+= 1.8.0 =
+
+* Include Facebook comment box under the video to increase video view
+* 'like video' short code has retired
+* Mouseover image feature has retired
+* Selection box has retired
 
 = 1.7.9 =
 
