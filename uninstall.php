@@ -16,6 +16,7 @@
     delete_post_meta($postinfo->ID, '_tubes_rel_link');
     delete_post_meta($postinfo->ID, '_tubes_videos_link');
     delete_post_meta($postinfo->ID, '_tubes_sidebar_link');
+    delete_post_meta($postinfo->ID, '_tubes_img_link');
  }
 
  $allpages = get_pages();

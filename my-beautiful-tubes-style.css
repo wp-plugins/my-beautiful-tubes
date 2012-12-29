@@ -17,3 +17,64 @@
  clear:both;
  margin:10px auto 3px auto;
 }
+
+div.beauty-tube-wrapper {
+  width:473px;
+  display:block;
+  margin-bottom:10px;
+  margin-top:10px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+img.beauty-image {
+  position: relative;
+  width: 112px;
+  height: 73px;
+  -ms-object-fit: contain;
+  -moz-object-fit: contain;
+  -o-object-fit: contain;
+  -webkit-object-fit: contain;
+  object-fit: contain;
+}
+
+div.beauty-img-wrap {
+  width:116px;
+  float:left;
+  padding:1px auto auto 1px; 
+  opacity:0.5;
+  filter:alpha(opacity=50); 
+}
+
+div.beauty-img-wrap:hover {
+  opacity:1.0;
+  filter:alpha(opacity=100); 
+}
+
+div.beauty-img-main-wrap {
+  width:473px;
+  position:relative;
+  display:block;
+  cursor:pointer;
+  font-size:17px;
+  color:#302217;
+  padding:1px auto auto 1px; 
+}
+
+p.beauty-pi-tag {
+  width: 112px;
+}
+
+p.beauty-pi-tag a {
+  float:left;
+  font-size:16px;
+  text-align:justify;
+}
+
+hr.beauty-line {
+  position:relative;
+  border:1px dotted #808000;
+  width:98%;
+  margin-left:1%;
+  margin-right:1%;
+}

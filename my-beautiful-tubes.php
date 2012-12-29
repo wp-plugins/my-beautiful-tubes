@@ -3,7 +3,7 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://gadgets-code.com/my-beautiful-tubes-tutorial
 Description: A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
-Version: 1.8.0
+Version: 1.8.2
 Author: Gadgets-Code.Com
 Author URI: http://gadgets-code.com
 License: GPLv2
@@ -30,6 +30,13 @@ include_once('my-beautiful-tubes-meta-box-setting.inc.php');
 include_once('my-beautiful-tubes-side-widget.inc.php');
 include_once('my-beautiful-tubes-displays-content.inc.php');
 
-wp_register_style('myBeautyStyleSheet', plugins_url( 'my-beautiful-tubes-style.css' , __FILE__ ), array(), '3', 'all' );
+add_action( 'wp_footer', 'my_beautiful_tubes_init' );
+
+function my_beautiful_tubes_init() {
+  wp_enqueue_script( 'my-beautiful-tubes-script' );
+}
+
+wp_register_script( 'my-beautiful-tubes-script', plugins_url('js/btwu.js', __FILE__) );
+wp_register_style('myBeautyStyleSheet', plugins_url( 'my-beautiful-tubes-style.css' , __FILE__ ), array(), '10', 'all' );
 wp_enqueue_style( 'myBeautyStyleSheet');
 ?>
