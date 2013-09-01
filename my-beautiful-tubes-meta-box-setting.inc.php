@@ -54,14 +54,21 @@ function tube_save_meta_box($post_id) {
         return;
     }
 
-    if( isset( $_POST['tubes_url'] ) )
+    if( isset( $_POST['tubes_url'] ) && $_POST['tubes_url']!=='' ) {
      update_post_meta( $post_id, '_tubes_url', esc_attr( $_POST['tubes_url'] ) );
-
-    if( isset( $_POST['tubes_img_link'] ) )
+    } else {
+     delete_post_meta($post_id, '_tubes_url');
+    }
+    if( isset( $_POST['tubes_img_link'] ) && $_POST['tubes_img_link']!=='' ) {
      update_post_meta( $post_id, '_tubes_img_link', esc_attr( $_POST['tubes_img_link'] ) );
-
-    if( isset( $_POST['tubes_sidebar_link'] ) )
+    } else {
+     delete_post_meta($post_id, '_tubes_img_link');
+    }
+    if( isset( $_POST['tubes_sidebar_link'] ) && $_POST['tubes_sidebar_link']!=='' ) {
      update_post_meta( $post_id, '_tubes_sidebar_link', esc_attr( $_POST['tubes_sidebar_link'] ) );
+    } else {
+     delete_post_meta($post_id, '_tubes_sidebar_link');
+    }
 
 }
 ?>

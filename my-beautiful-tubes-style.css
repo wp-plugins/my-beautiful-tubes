@@ -78,3 +78,64 @@ hr.beauty-line {
   margin-left:1%;
   margin-right:1%;
 }
+
+.my_tube_sticky_widgets_header {
+ width:90%;
+ height : 23px;
+ color:#ffffff;
+ text-align:center;
+ font-weight:bold;
+ font-size:23px;
+ padding:3% 5% 3% 5%;
+ background-image:url('featureposts.png');
+ background-repeat:repeat;
+}
+
+.my_tube_sticky_posts_widget {
+ position:relative;
+ display:block;
+ width:100%;
+ margin-left:auto;
+ margin-right:auto;
+ margin-top:6px;
+ margin-bottom:3px;
+}
+
+.my_tube_sticky_posts_img_wraps {
+ float:left;
+ margin-right:1px;
+ margin-bottom:3px;
+ height:100px;
+ width:100px;
+ padding:3px 3px 3px 3px;
+ border:1px dashed #ffffff;
+}
+
+.my_tube_sticky_posts_img_wraps:hover {
+ border:1px solid red;
+}
+
+.my_tube_sticky_posts_text_wraps {
+ float:left;
+ font-size:17px;
+ width:50%;
+ height:100px;
+ margin-bottom:3px;
+ padding:2% 1% 1% 3%;
+ overflow:hidden;
+}
+
+.my_tube_sticky_posts_text_wraps a {
+ text-decoration:none;
+ color:red;
+}
+
+.my_tube_sticky_posts_text_wraps a:hover {
+ text-decoration:underline;
+}
+
+.my_tube_widget_seperator {
+ border:1px inset #41383C;
+ width:99%;
+ margin:3px auto 3px auto;
+}
