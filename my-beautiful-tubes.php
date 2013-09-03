@@ -2,9 +2,9 @@
 /*
 Plugin Name: my beautiful tubes
 Plugin URI: http://wordpress.org/plugins/my-beautiful-tubes/
-Description: A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
-Version: 1.8.3
-Author: Gadgets-Code.Com
+Description: A plugin which allows blogger to embed youtube's' video within the post and page and get more views for that video.
+Version: 1.8.5
+Author: GadgetsChoose
 Author URI: http://onmouseenter.com/
 License: GPLv2
 */
@@ -31,11 +31,14 @@ include_once('my-beautiful-tubes-side-widget.inc.php');
 include_once('my-beautiful-tubes-displays-content.inc.php');
 include_once('my-beautifultubes-register-tinymce-buttons.inc.php');
 
-add_action( 'wp_footer', 'my_beautiful_tubes_init' );
-
-function my_beautiful_tubes_init() {
-  wp_enqueue_script( 'my-beautiful-tubes-script' );
+function load_beautiful_script() {
+        wp_register_script( 'my-beautiful-tubes-script', plugins_url('js/btwu.js', __FILE__), array('jquery'), '1.0.1', true  );
+        wp_enqueue_script( 'my-beautiful-tubes-script' );
+        wp_register_style('myBeautyStyleSheet', plugins_url( 'my-beautiful-tubes-style.css' , __FILE__ ), array(), '35', 'all' );
+        wp_enqueue_style( 'myBeautyStyleSheet');
 }
+
+add_action('init', 'load_beautiful_script');
 
 function mytube_tutorial_link($links, $file) {
 
@@ -48,7 +51,4 @@ function mytube_tutorial_link($links, $file) {
 }
 
 add_filter('plugin_action_links', 'mytube_tutorial_link', 10, 2);
-wp_register_script( 'my-beautiful-tubes-script', plugins_url('js/btwu.js', __FILE__) );
-wp_register_style('myBeautyStyleSheet', plugins_url( 'my-beautiful-tubes-style.css' , __FILE__ ), array(), '13', 'all' );
-wp_enqueue_style( 'myBeautyStyleSheet');
 ?>

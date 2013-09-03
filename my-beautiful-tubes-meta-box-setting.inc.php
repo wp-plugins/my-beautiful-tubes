@@ -20,8 +20,7 @@ function tubes_meta_box($post,$box) {
   $tube_img_link = get_post_meta($post->ID,'_tubes_img_link',true);
   wp_nonce_field( 'my_beautiful_tubes_meta_box_nonce', 'beautiful_tubes_meta_box_nonce' );
 
-  echo '<p>'.__('Content ','tube-plugin'). ' : <input type="text" name="tubes_img_link" value="'.esc_attr($tube_img_link).'"/></p>
-        <p><a href="http://gadgets-code.com/my-beautiful-tubes-tutorial-one" target="_blank">Help?</a></p>';
+  echo '<p>'.__('Content ','tube-plugin'). ' : <input type="text" name="tubes_img_link" value="'.esc_attr($tube_img_link).'"/></p>';
 
 }
 
@@ -33,8 +32,7 @@ function tube_meta_box($post,$box) {
 
   echo '<p>'.__('Content ','tube-plugin'). ' : <input type="text" name="tubes_url" value="'.esc_attr($tube_url).'"/></p>
         <p>'.__('Sidebar ','tube-plugin'). ' : <input type="text" name="tubes_sidebar_link" value="'.esc_attr($tube_sidebar_link).'"/></p>
-        <p><a href="http://gadgets-code.com/my-beautiful-tubes-tutorial" target="_blank">Help?</a></p>';
-
+        <p><a href="http://onmouseenter.com/how-to-get-more-youtube-video-view-from-facebook/" target="_blank">Help?</a></p>';
 }
 
 function tube_save_meta_box($post_id) {

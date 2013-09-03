@@ -1,4 +1,5 @@
 <?php
+
 add_filter('the_content','displays_video');
 
 function displays_video($content) {
@@ -42,11 +43,9 @@ function displays_video($content) {
 
            $args = array(
              'numberposts' => -1,
-             'offset' => 0,
              'category' => $post_categories[0],
              'orderby' => 'rand',
              'order' => 'DESC',
-             'include' =>'',
              'exclude' => $img_post_id
            );
 

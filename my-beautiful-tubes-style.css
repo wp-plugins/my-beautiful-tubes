@@ -12,10 +12,16 @@
 }
 
 .beautiful-tubes-side-widget {
- width:270px;
+ width:98%;
  display:block;
- clear:both;
- margin:10px auto 3px auto;
+ padding:3px 1% 3px 1%;
+}
+
+.related_tube {
+ margin:0 auto 0 auto;
+ width:270px; 
+ height:152px;
+ display:block;
 }
 
 div.beauty-tube-wrapper {
@@ -79,19 +85,29 @@ hr.beauty-line {
   margin-right:1%;
 }
 
-.my_tube_sticky_widgets_header {
+.my_tube_sticky_widgets_header, .my_tube_currents_widgets_header, .my_tube_related_widgets_header {
  width:90%;
  height : 23px;
  color:#ffffff;
+ margin-top:3px;
  text-align:center;
  font-weight:bold;
  font-size:23px;
  padding:3% 5% 3% 5%;
- background-image:url('featureposts.png');
+ background-image:url('./img/currentpost.png');
  background-repeat:repeat;
 }
 
+.my_tube_sticky_widgets_header {
+ background-image:url('./img/featurepost.png');
+}
+
+.my_tube_related_widgets_header {
+ background-image:url('./img/relatedpost.png');
+}
+
 .my_tube_sticky_posts_widget {
+ float:left;
  position:relative;
  display:block;
  width:100%;
@@ -103,31 +119,35 @@ hr.beauty-line {
 
 .my_tube_sticky_posts_img_wraps {
  float:left;
+ position:relative;
  margin-right:1px;
  margin-bottom:3px;
- height:100px;
- width:100px;
- padding:3px 3px 3px 3px;
- border:1px dashed #ffffff;
+ height:90px;
+ width:120px;
+ padding:2px 5px 2px 5px;
+ background-color:#ffffff;
+ border:1px dashed blue;
 }
 
 .my_tube_sticky_posts_img_wraps:hover {
- border:1px solid red;
+ border:1px dashed green;
+ cursor:pointer;
 }
 
 .my_tube_sticky_posts_text_wraps {
  float:left;
  font-size:17px;
  width:50%;
- height:100px;
+ height:90px;
  margin-bottom:3px;
- padding:2% 1% 1% 3%;
+ padding:3px 2% 3px 2%;
+ background-color:#ffffff;
  overflow:hidden;
 }
 
 .my_tube_sticky_posts_text_wraps a {
  text-decoration:none;
- color:red;
+ color:blue;
 }
 
 .my_tube_sticky_posts_text_wraps a:hover {
