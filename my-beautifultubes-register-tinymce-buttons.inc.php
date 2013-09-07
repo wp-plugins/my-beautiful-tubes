@@ -14,7 +14,7 @@ function my_beautifultubes_TinyMCE_button() {
 }
 
 function register_tube_button( $buttons ) {
-   array_push( $buttons, "|", "youtubevideo" );
+   array_push( $buttons, "recordvideo", "incvideo" );
    return $buttons;
 }
 

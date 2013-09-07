@@ -2,13 +2,37 @@
 
 add_action('admin_init','my_beautiful_tubes_meta_box_init');
 add_action('admin_init','my_beautiful_tubes_second_meta_box_init');
+add_action('wp_head', 'my_beauty_tube_share_buttons_loaded');
 
 function my_beautiful_tubes_meta_box_init() {
-
   add_meta_box('tube-url-meta',__('Social Box','tube-plugin'),'tube_meta_box','post','side','default');
   add_meta_box('tube-url-meta',__('Social Box','tube-plugin'),'tube_meta_box','page','side','default');
   add_action('save_post','tube_save_meta_box');
+}
 
+//include social buttons code in video upload area
+function my_beauty_tube_share_buttons_loaded() {
+?>
+    <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script type="text/javascript">
+        (function() {
+             var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
+             li.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + '//platform.stumbleupon.com/1/widgets.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
+        })();
+    </script>
+
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<?php
 }
 
 function my_beautiful_tubes_second_meta_box_init() {

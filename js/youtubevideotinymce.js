@@ -1,10 +1,19 @@
 (function() {
    tinymce.create('tinymce.plugins.youtubevideo', {
       init : function(ed, url) {
-         ed.addButton('youtubevideo', {
-            title : 'Youtube',
+         ed.addButton('incvideo', {
+            title : 'Insert Video',
             image : url+'/youtubed.png',
-            onclick : function() {
+	    cmd : 'youtubevideo'
+            
+         });
+	 ed.addButton('recordvideo', {
+            title : 'Record Video',
+            image : url+'/record.png',
+	    cmd : 'recordvideo'
+            
+         });
+	 ed.addCommand('youtubevideo', function() {
                 var vidurl = prompt("Youtube Video URL", "");
                 var height = prompt("Height", "300");
 		var suggestWidth = (4/3) * height;
@@ -27,16 +36,25 @@
 			ed.execCommand('mceInsertContent', false, vplayer);
 			} else if(vkey.length === 1) {
 				vkey = vkey[0].split('youtu.be/')[1];
-				if(vkey !== undefined)
+				if(vkey !== undefined) {
 					vplayer = '<iframe width="' + width + '" height="' + height + '" src="http://www.youtube.com/embed/' + vkey + '" frameborder="0" allowfullscreen="true"></iframe>'; 
-			ed.execCommand('mceInsertContent', false, vplayer);
+					ed.execCommand('mceInsertContent', false, vplayer);
+				}
 			}
 			
 		}
-                
-                                 
-            }
          });
+	 ed.addCommand('recordvideo', function() {
+                ed.windowManager.open({
+                	file : url + '/recorded.html',
+                	width : 617,
+                	height : 493,
+                	inline : 1
+            		}, {
+                	plugin_url : url // Plugin absolute URL
+            	});
+
+        });
       },
       createControl : function(n, cm) {
          return null;
@@ -47,7 +65,7 @@
             author : 'Gadgets Choose',
             authorurl : 'http://onmouseenter.com/',
             infourl : 'http://onmouseenter.com/',
-            version : "1.0"
+            version : "2.0"
          };
       }
    });
