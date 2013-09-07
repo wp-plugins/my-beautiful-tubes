@@ -17,7 +17,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onUploadSuccess(event) {
-        alert('Your video was uploaded successfully and is currently being processed. Please wait for a few minutes and do not close the recording panel yet until you see a share link in a prompt box!');
+        alert('Your video was uploaded successfully and is currently under processed. Please wait for a few minutes and please do not close the recording panel yet until you see a share link in a prompt box!');
 }
 
 function onProcessingComplete(event) {

@@ -47,8 +47,8 @@
 	 ed.addCommand('recordvideo', function() {
                 ed.windowManager.open({
                 	file : url + '/recorded.html',
-                	width : 617,
-                	height : 493,
+                	width : 619,
+                	height : 496,
                 	inline : 1
             		}, {
                 	plugin_url : url // Plugin absolute URL

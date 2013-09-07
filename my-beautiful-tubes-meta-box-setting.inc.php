@@ -2,7 +2,7 @@
 
 add_action('admin_init','my_beautiful_tubes_meta_box_init');
 add_action('admin_init','my_beautiful_tubes_second_meta_box_init');
-add_action('wp_head', 'my_beauty_tube_share_buttons_loaded');
+add_action('wp_head', 'my_beauty_tube_share_button_loaded');
 
 function my_beautiful_tubes_meta_box_init() {
   add_meta_box('tube-url-meta',__('Social Box','tube-plugin'),'tube_meta_box','post','side','default');
@@ -11,7 +11,7 @@ function my_beautiful_tubes_meta_box_init() {
 }
 
 //include social buttons code in video upload area
-function my_beauty_tube_share_buttons_loaded() {
+function my_beauty_tube_share_button_loaded() {
 ?>
     <script>
         (function(d, s, id) {

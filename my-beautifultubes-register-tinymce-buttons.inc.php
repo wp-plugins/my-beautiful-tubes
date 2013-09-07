@@ -10,7 +10,6 @@ function my_beautifultubes_TinyMCE_button() {
       add_filter( 'mce_external_plugins', 'add_tube_plugin' );
       add_filter( 'mce_buttons', 'register_tube_button' );
    }
-
 }
 
 function register_tube_button( $buttons ) {

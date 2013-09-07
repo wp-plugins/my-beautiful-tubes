@@ -1,13 +1,13 @@
 === my beautiful tubes ===
-Contributors: GadgetsChoose
+Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags: sidebar, related, related posts, facebook, video, widget, widgets, wordpress ,Post, google, plugin, posts, admin, page, pages, youtube, api, blog, content, embed, link, links, media, plugins, related, Share, sharing, videos, Facebook, webcam, upload, image
 Requires at least: 2.8
 Tested up to: 3.6
-Stable tag: 1.8.7
+Stable tag: 1.8.6
 License: GPLv2
 
-A plugin which allows publisher to embed youtube videos on the post and page and get more views for that video.
+A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
 
 == Description ==
 
@@ -33,7 +33,7 @@ Please upgrade immediately to enjoy the new features included in this latest ver
 
 == Changelog ==
 
-= 1.8.7 =
+= 1.8.6 =
 
 * Include upload widget where you can now record video from the webcam and then upload that video to Youtube right from wordpress admin page.
 
