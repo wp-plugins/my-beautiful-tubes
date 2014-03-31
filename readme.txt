@@ -3,15 +3,15 @@ Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags: sidebar, related, related posts, facebook, video, widget, widgets, wordpress ,Post, google, plugin, posts, admin, page, pages, youtube, api, blog, content, embed, link, links, media, plugins, related, Share, sharing, videos, Facebook, webcam, upload, image
 Requires at least: 2.8
-Tested up to: 3.6
-Stable tag: 1.8.6
+Tested up to: 3.8
+Stable tag: 1.8.7
 License: GPLv2
 
 A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
 
 == Description ==
 
-This plugin allows you to insert youtube videos into your post, get more video views on Facebook, showing the related and feature videos to your blog visitors as well as lets you taking video with webcam, upload it to youtube and published that video together with your article all in one right from the wordpress admin area. More details from this plugin : http://onmouseenter.com/how-to-get-more-youtube-video-view-from-facebook/
+This plugin allows you to insert youtube videos into your post, get more video views on Facebook, showing the related and feature post videos to your blog visitors as well as lets you taking video with webcam, upload it to youtube and published that video together with your article all in one right from the wordpress admin area. More details from this plugin : http://onmouseenter.com/how-to-get-more-youtube-video-view-from-facebook/
   
 == Frequently Asked Questions == 
 
@@ -32,6 +32,10 @@ You can visit my main plugins page and leave your question under post comment an
 Please upgrade immediately to enjoy the new features included in this latest version.
 
 == Changelog ==
+
+= 1.8.7 =
+
+Bug fix
 
 = 1.8.6 =
 
