@@ -1,10 +1,10 @@
 === my beautiful tubes ===
 Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
-Tags: sidebar, related, related posts, facebook, video, widget, widgets, wordpress ,Post, google, plugin, posts, admin, page, pages, youtube, api, blog, content, embed, link, links, media, plugins, related, Share, sharing, videos, Facebook, webcam, upload, image
+Tags: sidebar, related, related posts, facebook, video, widget, widgets, wordpress ,Post, google, plugin, posts, admin, page, pages, youtube, api, blog, content, embed, link, links, media, plugins, related, Share, sharing, videos, Facebook, webcam, upload, image, images
 Requires at least: 2.8
-Tested up to: 3.8
-Stable tag: 1.8.7
+Tested up to: 3.9
+Stable tag: 1.8.8
 License: GPLv2
 
 A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
@@ -32,6 +32,10 @@ You can visit my main plugins page and leave your question under post comment an
 Please upgrade immediately to enjoy the new features included in this latest version.
 
 == Changelog ==
+
+= 1.8.8 =
+
+Updated wordpress version to 3.9
 
 = 1.8.7 =
 
