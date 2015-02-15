@@ -3,9 +3,9 @@
 Plugin Name: my beautiful tubes
 Plugin URI: http://wordpress.org/plugins/my-beautiful-tubes/
 Description: A plugin which allows blogger to embed youtube's' video within the post and page and get more views for that video.
-Version: 1.8.8
+Version: 1.8.9
 Author: GadgetsChoose
-Author URI: http://onmouseenter.com/
+Author URI: http://gadgets-code.com/
 License: GPLv2
 */
 
@@ -44,7 +44,7 @@ function mytube_tutorial_link($links, $file) {
 
     if ( $file == 'my-beautiful-tubes/my-beautiful-tubes.php' ) {
         /* Insert the link at the end*/
-        $links['tutorial'] = sprintf( '<a href="%s"> %s </a>', 'http://onmouseenter.com/how-to-get-more-youtube-video-view-from-facebook/', __( 'Tutorial', 'my-beautiful-tubes' ) );
+        $links['tutorial'] = sprintf( '<a href="%s"> %s </a>', 'http://gadgets-code.com/how-to-get-more-youtube-video-view-from-facebook', __( 'Tutorial', 'my-beautiful-tubes' ) );
     }
     return $links;
 
