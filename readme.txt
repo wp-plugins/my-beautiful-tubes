@@ -3,11 +3,11 @@ Contributors: Gadgets Choose
 Donate link: http://todayprofits.gadgets-code.com/donation-page/
 Tags: sidebar, related, related posts, facebook, video, widget, widgets, wordpress ,Post, google, plugin, posts, admin, page, pages, youtube, api, blog, content, embed, link, links, media, plugins, related, Share, sharing, videos, Facebook, webcam, upload, image, images
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 1.8.9
+Tested up to: 4.2.4
+Stable tag: 1.9.0
 License: GPLv2
 
-A plugin which allows blogger to embed youtube video on the post and page and get more views for that video.
+A plugin which allows blogger to embed youtube videos on the post and page and get more views for that video.
 
 == Description ==
 
@@ -32,6 +32,14 @@ You can visit my main plugins page and leave your question under post comment an
 Please upgrade immediately to enjoy the new features included in this latest version.
 
 == Changelog ==
+
+= 1.9.0 =
+
+Updated wordpress version to 4.2 and create the sliding image feature
+
+= 1.8.9 =
+
+Updated wordpress version to 4.1
 
 = 1.8.8 =
 

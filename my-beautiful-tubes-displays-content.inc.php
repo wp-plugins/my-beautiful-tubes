@@ -52,10 +52,10 @@ function displays_video($content) {
            $imgposts = get_posts( $args );
            $imagelinks = '';
            $countimg = 0;
+		   $img_width = 0;
            foreach($imgposts as $impost) {
-
-              if($countimg == 4)
-               break;
+			  if($counting == 5)
+				  break;
               $post_title = $impost->post_title;
               $post_linkage = get_permalink( $impost->ID );
               $video_imag =  get_post_meta($impost->ID, '_tubes_img_link', true);
@@ -66,14 +66,14 @@ function displays_video($content) {
               $imgl = $imgg_match[0];
               $imgl = str_replace("http://youtu.be/","", $imgl);
               $youtubes_imgs = "http://img.youtube.com/vi/$imgl/1.jpg";
-              $images =  "<div class='beauty-img-wrap'><img id='shv' class='beauty-image' src='$youtubes_imgs' name='$imgl'/>";
+              $images =  "<div class='beauty-img-wrap'><img id='shv' class='beauty-image' src='$youtubes_imgs' name='$imgl'/></div>";
               $postlink = "<p class='beauty-pi-tag'><a href='$post_linkage'>$post_title</a></p></div>";
-              $imagelinks .= $images.$postlink;
+              $imagelinks .= $images;
               $countimg++;
-
+			  $img_width *= $countimg;
            }
 
-           $imagelinks = "<div class='beauty-img-main-wrap'><hr class='beauty-line'/>Related Videos and Posts : <br/><hr class='beauty-line'/>" .$imagelinks. "</div>";
+           $imagelinks = '<div class=\'beauty-img-main-wrap\'><figure style="width:$img_width;">' .$imagelinks. "</figure></div>";
 
            $vidtub = $v_img_match[0];
            $vid_tube = $vidtub;
